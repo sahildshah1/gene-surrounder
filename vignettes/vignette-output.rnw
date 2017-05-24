@@ -1,0 +1,28 @@
+
+
+
+Our method outputs a data frame. 
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+str(geneNIDG.hsa4171)
+
+
+@ 
+
+% =======================================================================
+
+We plot the results against every radius.
+
+<<fig=TRUE,echo=TRUE,width=11.43,height=6.71>>=
+
+source("../../R/plotRadiusVS.R")
+
+plotRadiusVS(geneNIDG.hsa4171)
+
+@
+
+
+
+% \SweaveInput{vignette-radiusVSplots.rnw}

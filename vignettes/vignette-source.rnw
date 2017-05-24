@@ -1,0 +1,34 @@
+
+The functions that implement our method have to be sourced. The \texttt{Observed.SI,
+Resample.SI,SumAbsCor} functions implement the \textit{Sphere of Influence} procedure
+and the \texttt{Resample.DecayDE, Observed.DecayDE} functions implement the 
+\textit{Decay of Differential Expression} procedure. The \texttt{geneNIDG}
+function calls these functions. 
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+library(pcaPP)
+library(igraph) # load largestCompKEGGigraph
+library(limma) #calcGeneStats()
+library(metap) #pFisher sumlog()
+
+source("../../R/calcCorMatrix.R")
+source("../../R/calcGeneTStats.R")
+source("../../R/calcAllPairsDistances.R")
+
+
+source("../../R/Observed.SI.R")
+source("../../R/Resample.SI.R")
+
+source("../../R/SumAbsCor.R")
+
+source("../../R/Resample.DecayDE.R")
+source("../../R/Observed.DecayDE.R")
+
+
+source("../../R/geneNIDG.R")
+
+@
+
+

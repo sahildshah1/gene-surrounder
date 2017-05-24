@@ -1,0 +1,113 @@
+
+% ===========================================================================
+% file: vignette.rnw
+% description: 
+% requires: 
+% author: Sahil Shah <sahil.shah@u.northwestern.edu>
+% ==========================================================================
+
+% LaTeX preamble and Top matter ----------------------------------------------
+
+\documentclass[11pt]{article}
+\usepackage[margin=0.9in]{geometry}
+\usepackage{graphicx, amsmath, url,courier,array,csquotes}
+
+\usepackage{Sweave}
+\setkeys{Gin}{width=1.0\textwidth}
+\graphicspath{{./}{figs/}}
+
+\usepackage{hyperref}
+
+
+%http://stackoverflow.com/questions/8902679/getting-sweave-code-chunks-inside-some-framed-box
+
+\DefineVerbatimEnvironment{Sinput}{Verbatim} {xleftmargin=2em,
+                                              frame=single}
+\DefineVerbatimEnvironment{Soutput}{Verbatim}{xleftmargin=2em,
+                                              frame=single}
+
+
+\begin{document}
+
+% =============================================================================
+
+\title{\vspace{-1cm}The NIDG package Vignette}
+
+\author{Sahil Shah and Rosemary Braun 
+	   \href{mailto:rbraun@northwestern.edu}{<\texttt{rbraun@northwestern.edu}>}}
+
+\date{\today}
+
+\maketitle
+
+% ----------------------------------------------------------------------------
+
+\section*{Availability}  %------------------------------------------------
+
+The \texttt{NIDG} package and its documentation are available on GitHub at 
+\url{https://github.com/sahildshah1}. 
+
+
+\section*{Introduction}  %------------------------------------------------
+
+The \texttt{NIDG} package implements the method we previously developed~\cite{SHAH2017}
+to identify disease-associated genes from expression data and an independent
+network model of cellular interactions. We developed NIDG to find the genes
+with neighbors on the network that are differentially expressed (with the
+magnitude of the differential expression decreasing with distance from the
+putative disease gene) and have correlated expression with the putative disease
+gene. Since the differential expression of the neighbors of a putative disease
+gene does not depend on their association with that gene, our algorithm consists
+of two tests that are run independently of each other 
+(Table~\ref{tab:procedure-sphere}, Table~\ref{tab:procedure-decay}). Their results
+are then combined to determine if the putative disease gene is a central
+candidate disease gene.
+
+\section*{Example} %------------------------------------------------
+
+In order to illustrate our method, we apply our algorithm  to one study  of
+high-vs-low grade ovarian cancer  from the publicly available and curated
+collection curatedOvarianData (GEO accession GSE14764)~\cite{Ganzfried2013}. We
+have  constructed the global network model from KEGG
+pathways~\cite{Kanehisa2008}.
+
+
+\subsection*{Load Data Set} % --------------------------------------------
+\SweaveInput{vignette-load.rnw}
+
+
+\subsection*{Source Functions} % ------------------------------------------
+\SweaveInput{vignette-source.rnw}
+
+
+\subsection*{Apply Functions to Data} % -----------------------------------
+\SweaveInput{vignette-apply.rnw}
+
+
+\subsection*{Description of the Output} % ---------------------------------
+\SweaveInput{vignette-output.rnw}
+
+
+% =========================================================================
+
+\clearpage
+
+\subsection*{Tables}
+
+\SweaveInput{tables-sphere.rnw}
+
+\SweaveInput{tables-decay.rnw}
+
+
+
+% Bibliography -------------------------------------------------------------
+
+\clearpage
+\bibliographystyle{unsrt}
+% comma separated list:
+\bibliography{main}
+
+
+
+
+\end{document}

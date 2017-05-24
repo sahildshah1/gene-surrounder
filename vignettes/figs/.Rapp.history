@@ -1,0 +1,1233 @@
+igenes.distances <- distances[distances <= 2#
+									  & distances > 0]#
+		igenes.names <- names(igenes.distances)
+str(igenes.names)
+X <- cbind(igenes.distances,#
+			  t( abs(geneStats$resampled[,igenes.names]) ) #
+			  )
+str(x)
+str(X)
+head(X)
+str(X)
+X[1:10,1:10]
+Y <- cor.fk(X)
+str(Y)
+Y <- cor.fk(X)
+Y[1,1:10]
+Y[1,2:10]
+null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+			return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+							igenes.distances) #
+#
+				   )#
+#
+		},#
+		numeric(1))
+str(null)
+null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+			return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+							igenes.distances) #
+#
+				   )#
+#
+		},#
+		numeric(1))
+Y <- cor.fk(X)
+null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+			return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+							igenes.distances) #
+#
+				   )#
+#
+		},#
+		numeric(1))
+gene.id
+observed.tau_b <- Observed.DecayDE(distance.matrix,#
+							 		gene.id,#
+							 		genes.assayedETnetwork,#
+							 		diameter,#
+							 		geneStats)
+null.tau_b <- Resample.DecayDE(distance.matrix,#
+							 gene.id,#
+							 genes.assayedETnetwork,#
+							 diameter,#
+							 geneStats)
+system.time(null.tau_b <- Resample.DecayDE(distance.matrix,#
+							 gene.id,#
+							 genes.assayedETnetwork,#
+							 diameter,#
+							 geneStats))
+25*25
+625/60
+observed.cor <- Observed.SI(gene.id,#
+                                distance.matrix,#
+                                cor.matrix,#
+                                diameter,#
+                                genes.assayedETnetwork)
+resampled.cor <- Resample.SI( gene.id,#
+                                  distance.matrix,#
+                                  cor.matrix,#
+                                  diameter,#
+                                  num.resamples,#
+                                  genes.assayedETnetwork)
+RADIUS = 10
+gene.id
+igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+		igenes.names <- names(igenes.distances)
+length(igenes.names)
+RADIUS = 20
+igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+		igenes.names <- names(igenes.distances)
+length(igenes.names)
+RADIUS = 25
+igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+		igenes.names <- names(igenes.distances)
+length(igenes.names)
+sizes <- vapply(1:diameter,function(RADIUS){#
+#
+		igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+#
+		length(distances)#
+	})
+sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(distances)#
+    },#
+    numeric(1))
+sizes
+rm(RADIUS)
+sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(distances)#
+    },#
+    numeric(1))
+sizes
+sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(igenes.distances)#
+    },#
+    numeric(1))
+length(sizes)
+sizes
+find(sizes==2708)
+which(sizes==2708)
+?which
+sizes[sizes==2708]
+length(genes.assayedETnetwork)
+str(genes.assayedETnetwork)
+sizes <- vapply(1:diameter,function(RADIUS){#
+#
+		igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+#
+		length(igenes.distances)#
+	},#
+	numeric(1))#
+	num.genes <- length(genes.assayedETnetwork) - 1#
+	geneid.d <- which(sizes==num.genes)[1]
+geneid.d
+null.tau_b <- vapply(2:geneid.d,function(RADIUS){#
+        # Excludes gene j with distances > 0 #
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+        igenes.names <- names(igenes.distances)#
+        null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+            return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+                            igenes.distances) #
+#
+                   )#
+#
+        },#
+        numeric(1))#
+#
+        # X <- cbind(igenes.distances,#
+        #     t( abs(geneStats$resampled[,igenes.names]) ) #
+        #     )#
+#
+        # Y <- cor.fk(X)#
+    },#
+    numeric(1000)) # numeric is length of one of the columns vapply stacks
+system.time(	sizes <- vapply(1:diameter,function(RADIUS){#
+#
+		igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+#
+		length(igenes.distances)#
+	},#
+	numeric(1))#
+	num.genes <- length(genes.assayedETnetwork) - 1#
+	geneid.d <- which(sizes==num.genes)[1])
+system.time(#
+	# null.tau b matrix of 1000 row 34 columns b/c stacks columns#
+	null.tau_b <- vapply(2:geneid.d,function(RADIUS){#
+		# Excludes gene j with distances > 0 #
+		igenes.distances <- distances[distances <= RADIUS#
+									  & distances > 0]#
+		igenes.names <- names(igenes.distances)#
+		null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+			return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+							igenes.distances) #
+#
+				   )#
+#
+		},#
+		numeric(1))#
+#
+		# X <- cbind(igenes.distances,#
+		# 	  t( abs(geneStats$resampled[,igenes.names]) ) #
+		# 	  )#
+#
+		# Y <- cor.fk(X)#
+	},#
+	numeric(1000)) # numeric is length of one of the columns vapply stacks#
+)
+observed.tau_b
+str(null.tau_b)
+?append
+?cbine
+?cbind
+A <- c(c(1,2),c(1,2))
+A
+A <- matrix(c(1,2),c(1,2))
+A
+A <- matrix(c(1,2,3,4),2,2)
+A
+append(A,c(5,6))
+cbind(A,c(5,6))
+cbind(A,c(5,6),1)
+str(null.tau_b)
+null.tau_b[1:3,20:21]
+cbind(null.tau_b,null.tau_b[,geneid.d])
+geneid.d
+str(sizes)
+sizes
+null.tau_b <- vapply(1:geneid.d,function(RADIUS){#
+        # Excludes gene j with distances > 0 #
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+        igenes.names <- names(igenes.distances)#
+        null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+            return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+                            igenes.distances) #
+#
+                   )#
+#
+        },#
+        numeric(1))#
+#
+        # X <- cbind(igenes.distances,#
+        #     t( abs(geneStats$resampled[,igenes.names]) ) #
+        #     )#
+#
+        # Y <- cor.fk(X)#
+    },#
+    numeric(1000)) # numeric is length of one of the columns vapply stacks
+cbind(null.tau_b, null.tau_b[, geneid.d])
+null.tau_b[1:3,20:21]
+null.tau_b[1:3,20:22]
+null.tau_b[1:3,20:23]
+null.tau_b[1:3,20:22]
+str(null.tau_b)
+str(geneid.d)
+cbind(null.tau_b, null.tau_b[, geneid.d])
+null.tau_b<- cbind(null.tau_b, null.tau_b[, geneid.d])
+str(null.tau_b)
+null.tau_b[1:2,20:23]
+A
+cbind(A,c(5,6,7,8))
+cbind(A,c(5,6))
+cbind(A,matrix(c(5,6,7,8),nrow=2)
+)
+rep(c(1,2),2)
+geneid.d
+diameter -geneid.d
+str(null.tau_b)
+# null.tau b matrix of 1000 row 34 columns b/c stacks columns#
+    null.tau_b <- vapply(1:geneid.d,function(RADIUS){#
+        # Excludes gene j with distances > 0 #
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+        igenes.names <- names(igenes.distances)#
+        null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+            return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+                            igenes.distances) #
+#
+                   )#
+#
+        },#
+        numeric(1))#
+#
+        # X <- cbind(igenes.distances,#
+        #     t( abs(geneStats$resampled[,igenes.names]) ) #
+        #     )#
+#
+        # Y <- cor.fk(X)#
+    },#
+    numeric(1000)) # numeric is length of one of the columns vapply stacks
+str(null.tau_b)
+str(matrix(#
+						rep(null.tau_b[, geneid.d],diameter -geneid.d),#
+						nrow = 1000))
+null.tau_b <- cbind(null.tau_b,#
+                    matrix(#
+                        rep(null.tau_b[, geneid.d],diameter -geneid.d),#
+                        nrow = 1000)#
+#
+                        )
+str(null.tau_b)
+null.tau_b[1:3,20:26]
+str(t(null.tau_b)
+)
+Resample.DecayDE <- function(distance.matrix,#
+                             gene.id,#
+                             genes.assayedETnetwork,#
+                             diameter,#
+                             geneStats){#
+    distances <- distance.matrix[gene.id,#
+                             genes.assayedETnetwork]#
+    sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(igenes.distances)#
+    },#
+    numeric(1))#
+    num.genes <- length(genes.assayedETnetwork) - 1#
+    geneid.d <- which(sizes==num.genes)[1]#
+    # null.tau b matrix of 1000 row 34 columns b/c stacks columns#
+    null.tau_b <- vapply(1:geneid.d,function(RADIUS){#
+        # Excludes gene j with distances > 0 #
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+        igenes.names <- names(igenes.distances)#
+        null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+            return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+                            igenes.distances) #
+#
+                   )#
+#
+        },#
+        numeric(1))#
+#
+        # X <- cbind(igenes.distances,#
+        #     t( abs(geneStats$resampled[,igenes.names]) ) #
+        #     )#
+#
+        # Y <- cor.fk(X)#
+    },#
+    numeric(1000)) # numeric is length of one of the columns vapply stacks#
+#
+    # 2:genid.d means number of rows in null.tau_b is not geneid.d#
+    null.tau_b <- cbind(null.tau_b,#
+                    matrix(#
+                        rep(null.tau_b[, geneid.d],diameter -geneid.d),#
+                        nrow = 1000)#
+#
+                        )#
+    # cf. ?vapply  #
+    # If FUN.VALUE is not an array, the result is a matrix with #
+    # length(FUN.VALUE) rows and length(X) columns,#
+#
+    # return matrix distance by resample number a la Resample.SI#
+    return(t(null.tau_b)#
+}#
+# 2: gene id. : cbind first row.#
+# preallocate matrix size instead of cbind?
+Resample.DecayDE <- function(distance.matrix,#
+                             gene.id,#
+                             genes.assayedETnetwork,#
+                             diameter,#
+                             geneStats){#
+    distances <- distance.matrix[gene.id,#
+                             genes.assayedETnetwork]#
+    sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(igenes.distances)#
+    },#
+    numeric(1))#
+    num.genes <- length(genes.assayedETnetwork) - 1#
+    geneid.d <- which(sizes==num.genes)[1]#
+    # null.tau b matrix of 1000 row 34 columns b/c stacks columns#
+    null.tau_b <- vapply(1:geneid.d,function(RADIUS){#
+        # Excludes gene j with distances > 0 #
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+        igenes.names <- names(igenes.distances)#
+        null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
+#
+            return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
+                            igenes.distances) #
+#
+                   )#
+#
+        },#
+        numeric(1))#
+#
+        # X <- cbind(igenes.distances,#
+        #     t( abs(geneStats$resampled[,igenes.names]) ) #
+        #     )#
+#
+        # Y <- cor.fk(X)#
+    },#
+    numeric(1000)) # numeric is length of one of the columns vapply stacks#
+#
+    # 2:genid.d means number of rows in null.tau_b is not geneid.d#
+    null.tau_b <- cbind(null.tau_b,#
+                    matrix(#
+                        rep(null.tau_b[, geneid.d],diameter -geneid.d),#
+                        nrow = 1000)#
+#
+                        )#
+    # cf. ?vapply  #
+    # If FUN.VALUE is not an array, the result is a matrix with #
+    # length(FUN.VALUE) rows and length(X) columns,#
+#
+    # return matrix distance by resample number a la Resample.SI#
+    return(t(null.tau_b))#
+}#
+# 2: gene id. : cbind first row.#
+# preallocate matrix size instead of cbind?
+gene.id
+system.time(null.tau_b <- Resample.DecayDE(distance.matrix,#
+							 gene.id,#
+							 genes.assayedETnetwork,#
+							 diameter,#
+							 geneStats))
+str(null.tau_b)
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+     },#
+     numeric(1))#
+ p.Decay[p.Decay == 0] <- 1/(num.resamples+1)
+p.Decay
+-log10(1)
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+     },#
+     numeric(1))
+p.Decay
+diameter - 1
+diameter =1
+observed.p <- observed.tau_b[distance]
+distance = 1
+observed.p <- observed.tau_b[distance]
+observed.p
+str(	null.p <- null.tau_b[distance,1:num.resamples])
+length(null.p[null.p <= observed.p])
+null.tau_b[distance,1:num.resamples]
+p.Decay <- vapply(1:diameter,function(distance){
+)
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+     },#
+     numeric(1)#
+)
+p.Decay
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+     },#
+     numeric(1))
+p.Decay
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+     },#
+     numeric(1))
+p.Decay
+diameter
+diameter = 34
+p.Decay <- vapply(1:diameter,function(distance){#
+#
+        observed.p <- observed.tau_b[distance]#
+        null.p <- null.tau_b[distance,1:num.resamples]#
+#
+        return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+     },#
+     numeric(1))
+p.Decay
+p.Decay[p.Decay == 0] <- 1/(num.resamples+1)
+rep('Sahil','Shah',2)
+apply('Sahil',rep(2))
+apply('Sahil',rep(),2)
+?apply
+?vapply
+sapply('Sahil,rep,2)
+)
+''
+sapply('Sahil',rep,2)
+sapply(c('Sahil','Shah'),rep,2)
+as.vector(sapply(c('Sahil','Shah'),rep,2))
+?vapply
+X
+X <- matrix(c(1,2,3,4),nrow=2)
+X
+cbind(X,X)
+dim(x)
+dim(X)
+c(dim(X),2)
+?adply
+libary(plyr)
+library(plyr)
+?adply
+str(data.frame(gene.id = rep(gene.id,diameter),#
+				  observed.tau_b = observed.tau_b,#
+				  p.Decay = p.Decay,#
+				  observed.cor = observed.cor,#
+				  p.Sphere = p.Sphere))
+# proportion of null sumabscor \GEQ #
+p.Sphere <- vapply(1:diameter,function(distance){#
+#
+    #observed.p <- observed.cor[[distance]]$cor#
+    observed.p <- observed.cor[distance]#
+    #null.p <- resampled.cor[[distance]]$cor#
+    null.p <- resampled.cor[distance,1:num.resamples ]#
+#
+    return(length(null.p[null.p >= observed.p])/length(null.p))#
+ },#
+ numeric(1))#
+#
+p.Sphere[p.Sphere == 0] <- 1/(num.resamples+1)
+X < - data.frame(gene.id = rep(gene.id,diameter),#
+				  observed.tau_b = observed.tau_b,#
+				  p.Decay = p.Decay,#
+				  observed.cor = observed.cor,#
+				  p.Sphere = p.Sphere)
+gene.id
+rep(gene.id,diameter)
+str(observed.tau_b = observed.tau_b)
+str(observed.tau_b)
+?dataframe
+?data.frame
+str(p.Decay)
+str(observed.cor)
+str(p.Sphere)
+X <- data.frame(gene.id = rep(gene.id,diameter),#
+				  observed.tau_b = observed.tau_b,#
+				  p.Decay = p.Decay,#
+				  observed.cor = observed.cor,#
+				  p.Sphere = p.Sphere)
+str(X)
+X[1:5,1:10]
+str(X)
+head(X)
+str(sizes)
+X <- data.frame(gene.id = rep(gene.id,diameter),#
+				  radius = 1:diameter,#
+				  size = sizes #
+				  observed.tau_b = observed.tau_b,#
+				  p.Decay = p.Decay,#
+				  observed.cor = observed.cor,#
+				  p.Sphere = p.Sphere)
+X <- data.frame(gene.id = rep(gene.id,diameter),#
+				  radius = 1:diameter,#
+				  size = sizes,#
+				  observed.tau_b = observed.tau_b,#
+				  p.Decay = p.Decay,#
+				  observed.cor = observed.cor,#
+				  p.Sphere = p.Sphere)
+str(X)
+head(X)
+rm(list=ls())
+geneNIDG <- function(distance.matrix,#
+                     cor.matrix,#
+                     geneStats,#
+                     genes.assayedETnetwork,#
+                     diameter,#
+                     num.resamples,#
+                     gene.id){#
+    # size -------------------------------------------------------------------#
+    distances <- distance.matrix[gene.id,#
+                             genes.assayedETnetwork]#
+    sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(igenes.distances)#
+    },#
+    numeric(1))#
+    # gene.DecayDE --------------------------------------------------------------#
+#
+    # vector of observed tau b and null tau b a la observed.cor and resampled.cor#
+#
+    observed.tau_b <- Observed.DecayDE(distance.matrix,#
+                                        gene.id,#
+                                        genes.assayedETnetwork,#
+                                        diameter,#
+                                        geneStats)#
+    null.tau_b <- Resample.DecayDE(distance.matrix,#
+                                 gene.id,#
+                                 genes.assayedETnetwork,#
+                                 diameter,#
+                                 geneStats,#
+                                 sizes)#
+    # proportion of null taub \LEQ observed i.e more discordant #
+    p.Decay <- vapply(1:diameter,function(distance){#
+#
+            observed.p <- observed.tau_b[distance]#
+            null.p <- null.tau_b[distance,1:num.resamples]#
+#
+            return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+         },#
+         numeric(1))#
+#
+    p.Decay[p.Decay == 0] <- 1/(num.resamples+1)    #
+    # gene.SI ----------------------------------------------------------------#
+    observed.cor <- Observed.SI(gene.id,#
+                                    distance.matrix,#
+                                    cor.matrix,#
+                                    diameter,#
+                                    genes.assayedETnetwork)#
+    resampled.cor <- Resample.SI( gene.id,#
+                                      distance.matrix,#
+                                      cor.matrix,#
+                                      diameter,#
+                                      num.resamples,#
+                                      genes.assayedETnetwork)#
+#
+    # proportion of null sumabscor \GEQ #
+    p.Sphere <- vapply(1:diameter,function(distance){#
+#
+        #observed.p <- observed.cor[[distance]]$cor#
+        observed.p <- observed.cor[distance]#
+        #null.p <- resampled.cor[[distance]]$cor#
+        null.p <- resampled.cor[distance,1:num.resamples ]#
+#
+        return(length(null.p[null.p >= observed.p])/length(null.p))#
+     },#
+     numeric(1))#
+#
+    p.Sphere[p.Sphere == 0] <- 1/(num.resamples+1)  #
+    # no base R combine p values ? combine after running --------------------#
+#
+    # ------------------------------------------------------------------------#
+#
+    # ?adply#
+    # The most unambiguous behaviour is achieved when .fun returns a data frame#
+#
+    return(data.frame(gene.id = rep(gene.id,diameter),#
+                      radius = 1:diameter,#
+                      size = sizes,#
+                      observed.tau_b = observed.tau_b,#
+                      p.Decay = p.Decay,#
+                      observed.cor = observed.cor,#
+                      p.Sphere = p.Sphere)#
+#
+        )#
+}
+geneStats = geneTStatsList[[2]]#
+cor.matrix = CurOv_RankCorMatrix_GSE14764_eset#
+distance.matrix = CompKEGG_ShortestDistMatrix#
+# distance.matrix = CompKEGG_ShortestDistMatrix#
+genes.assayedETnetwork = intersect(rownames(cor.matrix),#
+                               rownames(distance.matrix))#
+diameter = 34#
+num.resamples = 1000#
+#
+gene.id <-"hsa:2"#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R)
+# GSE14764 -------------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+#
+# LCC KEGGG -----------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")
+geneStats = geneTStatsList[[2]]#
+cor.matrix = CurOv_RankCorMatrix_GSE14764_eset#
+distance.matrix = CompKEGG_ShortestDistMatrix#
+# distance.matrix = CompKEGG_ShortestDistMatrix#
+genes.assayedETnetwork = intersect(rownames(cor.matrix),#
+                               rownames(distance.matrix))#
+diameter = 34#
+num.resamples = 1000#
+#
+gene.id <-"hsa:2"#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R)
+""
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R")
+geneNIDG <- function(distance.matrix,#
+                     cor.matrix,#
+                     geneStats,#
+                     genes.assayedETnetwork,#
+                     diameter,#
+                     num.resamples,#
+                     gene.id){#
+    # size -------------------------------------------------------------------#
+    distances <- distance.matrix[gene.id,#
+                             genes.assayedETnetwork]#
+    sizes <- vapply(1:diameter,function(RADIUS){#
+#
+        igenes.distances <- distances[distances <= RADIUS#
+                                      & distances > 0]#
+#
+        length(igenes.distances)#
+    },#
+    numeric(1))#
+    # gene.DecayDE --------------------------------------------------------------#
+#
+    # vector of observed tau b and null tau b a la observed.cor and resampled.cor#
+#
+    observed.tau_b <- Observed.DecayDE(distance.matrix,#
+                                        gene.id,#
+                                        genes.assayedETnetwork,#
+                                        diameter,#
+                                        geneStats)#
+    null.tau_b <- Resample.DecayDE(distance.matrix,#
+                                 gene.id,#
+                                 genes.assayedETnetwork,#
+                                 diameter,#
+                                 geneStats,#
+                                 sizes)#
+    # proportion of null taub \LEQ observed i.e more discordant #
+    p.Decay <- vapply(1:diameter,function(distance){#
+#
+            observed.p <- observed.tau_b[distance]#
+            null.p <- null.tau_b[distance,1:num.resamples]#
+#
+            return(length(null.p[null.p <= observed.p])/length(null.p))#
+#
+         },#
+         numeric(1))#
+#
+    p.Decay[p.Decay == 0] <- 1/(num.resamples+1)    #
+    # gene.SI ----------------------------------------------------------------#
+    observed.cor <- Observed.SI(gene.id,#
+                                    distance.matrix,#
+                                    cor.matrix,#
+                                    diameter,#
+                                    genes.assayedETnetwork)#
+    resampled.cor <- Resample.SI( gene.id,#
+                                      distance.matrix,#
+                                      cor.matrix,#
+                                      diameter,#
+                                      num.resamples,#
+                                      genes.assayedETnetwork)#
+#
+    # proportion of null sumabscor \GEQ #
+    p.Sphere <- vapply(1:diameter,function(distance){#
+#
+        #observed.p <- observed.cor[[distance]]$cor#
+        observed.p <- observed.cor[distance]#
+        #null.p <- resampled.cor[[distance]]$cor#
+        null.p <- resampled.cor[distance,1:num.resamples ]#
+#
+        return(length(null.p[null.p >= observed.p])/length(null.p))#
+     },#
+     numeric(1))#
+#
+    p.Sphere[p.Sphere == 0] <- 1/(num.resamples+1)  #
+    # no base R combine p values ? combine after running --------------------#
+#
+    # ------------------------------------------------------------------------#
+#
+    # ?adply#
+    # The most unambiguous behaviour is achieved when .fun returns a data frame#
+#
+    return(data.frame(gene.id = rep(gene.id,diameter),#
+                      radius = 1:diameter,#
+                      size = sizes,#
+                      observed.tau_b = observed.tau_b,#
+                      p.Decay = p.Decay,#
+                      observed.cor = observed.cor,#
+                      p.Sphere = p.Sphere)#
+#
+        )#
+}
+genes.assayedETnetwork <- intersect(rownames(CurOv_RankCorMatrix_GSE14764_eset),#
+                                    rownames(CompKEGG_ShortestDistMatrix))
+system.time(#
+#
+X <- geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+              geneStats = geneTStatsList[[2]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = "hsa:2")#
+#
+)
+str(X)
+X
+?adply
+system.time(#
+#
+    geneNIDG.GSE14764 <- adply(genes.assayedETnetwork[1:2],1,function(gene.id){#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+              geneStats = geneTStatsList[[2]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)
+2709/2
+1354*30
+40000/60
+666/60
+str(geneNIDG.GSE14764)
+head(geneNIDG.GSE14764)
+tail(geneNIDG.GSE14764)
+rm(CurOv_RankCorMatrix_GSE14764_eset)
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE17260_eset.RData")
+str(CurOv_RankCorMatrix_GSE17260_eset)
+rm(CurOv_RankCorMatrix_GSE17260_eset)
+rm(list=ls())
+ls()
+# GSE14764 -------------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+#
+# LCC KEGGG -----------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/geneNIDG.R")#
+genes.assayedETnetwork <- intersect(rownames(CurOv_RankCorMatrix_GSE14764_eset),#
+                                    rownames(CompKEGG_ShortestDistMatrix))#
+#
+library(plyr)
+system.time(#
+#
+    geneNIDG.GSE14764 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+              geneStats = geneTStatsList[[2]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE14764,#
+     file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData")
+rm(list=ls())
+# ===========================================================================#
+# ===========================================================================#
+#
+# GSE14764 -------------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+#
+# LCC KEGGG -----------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/geneNIDG.R")#
+genes.assayedETnetwork <- intersect(rownames(CurOv_RankCorMatrix_GSE14764_eset),#
+                                    rownames(CompKEGG_ShortestDistMatrix))#
+#
+library(plyr)#
+# ===========================================================================#
+# GSE14764 ==================================================================#
+#
+system.time(#
+#
+    geneNIDG.GSE14764 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+              geneStats = geneTStatsList[[2]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE14764,#
+     file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData")#
+# GSE17260 # =================================================================#
+#
+rm(CurOv_RankCorMatrix_GSE14764_eset)#
+#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE17260_eset.RData")#
+system.time(#
+#
+    geneNIDG.GSE17260 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE17260_eset,#
+              geneStats = geneTStatsList[[3]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE17260,#
+    file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE17260.RData")
+rm(list=ls())
+# ===========================================================================#
+# ===========================================================================#
+#
+# GSE14764 -------------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+#
+# LCC KEGGG -----------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/geneNIDG.R")#
+genes.assayedETnetwork <- intersect(rownames(CurOv_RankCorMatrix_GSE14764_eset),#
+                                    rownames(CompKEGG_ShortestDistMatrix))#
+#
+library(plyr)#
+# ===========================================================================#
+# GSE14764 ==================================================================#
+#
+system.time(#
+#
+    geneNIDG.GSE14764 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+              geneStats = geneTStatsList[[2]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE14764,#
+     file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData")#
+# GSE17260 # =================================================================#
+#
+rm(CurOv_RankCorMatrix_GSE14764_eset)#
+#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE17260_eset.RData")#
+system.time(#
+#
+    geneNIDG.GSE17260 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE17260_eset,#
+              geneStats = geneTStatsList[[3]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE17260,#
+    file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE17260.RData")#
+# GSE9891 # =================================================================#
+#
+rm(CurOv_RankCorMatrix_GSE17260_eset)#
+#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE9891_eset.RData")#
+system.time(#
+#
+    geneNIDG.GSE9891 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+        print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+        gene.id <- genes.assayedETnetwork[gene.number]#
+#
+         geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+              cor.matrix = CurOv_RankCorMatrix_GSE9891_eset,#
+              geneStats = geneTStatsList[[7]],#
+              genes.assayedETnetwork = genes.assayedETnetwork,#
+              diameter = 34,#
+              num.resamples = 1000,#
+              gene.id = gene.id)#
+    })#
+)#
+#
+save(geneNIDG.GSE9891,file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE9891.RData")
+rm(list=ls())
+ls()
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE17260_eset.RData")
+ls()
+CurOv_RankCorMatrix_GSE17260_eset
+rm(CurOv_RankCorMatrix_GSE17260_eset)
+ls()
+# ===========================================================================#
+# ===========================================================================#
+#
+# GSE14764 -------------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE14764_eset.RData")#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+#
+# LCC KEGGG -----------------------------------------------------------------#
+load("~/Documents/fishelMethod/data/networks/LCCKEGG_ShortestDistMatrix.RData")#
+library(pcaPP)#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/Observed.SI.R")#
+source("~/research/fishelMethod/sweave/2016-01-14/Resample.SI.R")#
+#
+source("~/research/fishelMethod/sweave/2016-01-14/SumAbsCor.R")#
+#
+source("~/research/fishelMethod/sweave/2016-04-06/Resample.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/Observed.DecayDE.R")#
+source("~/research/fishelMethod/sweave/2016-04-06/geneNIDG.R")#
+genes.assayedETnetwork <- intersect(rownames(CurOv_RankCorMatrix_GSE14764_eset),#
+		  							rownames(CompKEGG_ShortestDistMatrix))#
+#
+library(plyr)#
+# ===========================================================================#
+#
+# =================================================================#
+#
+# GSE14764 ==================================================================#
+#
+system.time(#
+#
+	geneNIDG.GSE14764 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+		print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+		gene.id <- genes.assayedETnetwork[gene.number]#
+#
+		 geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+			  cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,#
+			  geneStats = geneTStatsList[[2]],#
+			  genes.assayedETnetwork = genes.assayedETnetwork,#
+			  diameter = 34,#
+			  num.resamples = 1000,#
+			  gene.id = gene.id)#
+	})#
+)#
+#
+save(geneNIDG.GSE14764,#
+	 file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData")#
+# =================================================================#
+#
+# GSE17260 # =================================================================#
+#
+rm(geneNIDG.GSE14764.RData)#
+rm(CurOv_RankCorMatrix_GSE14764_eset)#
+#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE17260_eset.RData")#
+system.time(#
+#
+	geneNIDG.GSE17260 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+		print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+		gene.id <- genes.assayedETnetwork[gene.number]#
+#
+		 geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+			  cor.matrix = CurOv_RankCorMatrix_GSE17260_eset,#
+			  geneStats = geneTStatsList[[3]],#
+			  genes.assayedETnetwork = genes.assayedETnetwork,#
+			  diameter = 34,#
+			  num.resamples = 1000,#
+			  gene.id = gene.id)#
+	})#
+)#
+#
+save(geneNIDG.GSE17260,#
+	file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE17260.RData")#
+# =================================================================#
+# GSE9891 # =================================================================#
+#
+rm(geneNIDG.GSE17260.RData)#
+#
+rm(CurOv_RankCorMatrix_GSE17260_eset)#
+#
+load("~/Documents/fishelMethod/data/omics/CurOV_RankCor/CurOv_RankCorMatrix_GSE9891_eset.RData")#
+system.time(#
+#
+	geneNIDG.GSE9891 <- adply(1:length(genes.assayedETnetwork),1,function(gene.number){#
+#
+		print(paste("Gene",gene.number,"of",length(genes.assayedETnetwork)))#
+#
+		gene.id <- genes.assayedETnetwork[gene.number]#
+#
+		 geneNIDG(distance.matrix = CompKEGG_ShortestDistMatrix,#
+			  cor.matrix = CurOv_RankCorMatrix_GSE9891_eset,#
+			  geneStats = geneTStatsList[[7]],#
+			  genes.assayedETnetwork = genes.assayedETnetwork,#
+			  diameter = 34,#
+			  num.resamples = 1000,#
+			  gene.id = gene.id)#
+	})#
+)#
+#
+save(geneNIDG.GSE9891,file = "~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE9891.RData")#
+rm(geneNIDG.GSE9891.RData)#
+#
+rm(CurOv_RankCorMatrix_GSE9891_eset)
+install.package("RBGL")
+install.packages("RBGL")
+?phyper
+load("../../data/CurOvGradeKEGGnets.RData")#
+#
+load("../../data/largestCompKEGGigraph.RData")
+setwd("~/research/fishelMethod/nidg/vignettes/figs/")
+clc()
+clear()
+load("../../data/CurOvGradeKEGGnets.RData")#
+#
+load("../../data/largestCompKEGGigraph.RData")
+library(pcaPP)#
+library(igraph) # load largestCompKEGGigraph
+str(largestCompKEGGigraph)
+source("../../data/calcCorMatrix.R")#
+source("../../data/calcGeneTStats.R")#
+source("../../data/calcAllPairsDistances.R")
+source("../../R/calcCorMatrix.R")#
+#
+source("../../R/calcGeneTStats.R")#
+#
+source("../../R/calcAllPairsDistances.R")
+source("../../R/Observed.SI.R")#
+source("../../R/Resample.SI.R")#
+#
+source("../../R/SumAbsCor.R")#
+#
+source("../../R/Resample.DecayDE.R")#
+source("../../R/Observed.DecayDE.R")#
+source("../../R/geneNIDG.R")
+CurOv_RankCorMatrix_GSE14764_eset <- #
+calcCorMatrix(exprMatrix = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr,#
+              corMethod = "spearman",#
+              exprName = paste("CurOvGradeKEGGnets$","GSE14764_eset",sep=""))
+# List of observed (vector) and resampled (resampling by gene matrix) t statistics#
+#
+intersectGeneNames = intersect(rownames(CurOvGradeKEGGnets[[2]]$expr),#
+                               V(largestCompKEGGigraph)$name)#
+#
+expr = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr#
+classLabels = CurOvGradeKEGGnets[["GSE14764_eset"]]$grade#
+#I can reduce the number of t tests by reducing the expr matrix to #
+#only genes that are on the network.#
+reducedExpr = expr[intersectGeneNames,]#
+#
+geneTStats = calcGeneTStats(reducedExpr,#
+                            classLabels,#
+                            numResamples = 1000)
+str(geneTStats)
+CompKEGG_ShortestDistMatrix #
+<- calcAllPairsDistances(network = largestCompKEGGigraph,#
+                         directionPaths="all",#
+                         weightVector = NULL,#
+                         networkName = "largestCompKEGGigraph")
+CompKEGG_ShortestDistMatrix <- calcAllPairsDistances(network = largestCompKEGGigraph,#
+                         directionPaths="all",#
+                         weightVector = NULL,#
+                         networkName = "largestCompKEGGigraph")
+str(CompKEGG_ShortestDistMatrix)
+str(CompKEGG_ShortestDistMatrix)
+str(geneStats)
+strgeneTStats
+str(geneTStats)
+nrows(geneTStats$resampled)
+nrow(geneTStats$resampled)

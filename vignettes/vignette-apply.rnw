@@ -1,0 +1,122 @@
+
+
+
+The correlation between the expression of the genes is calculated.
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+CurOv_RankCorMatrix_GSE14764_eset <- 
+calcCorMatrix(exprMatrix = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr,
+			  corMethod = "spearman",
+			  exprName = paste("CurOvGradeKEGGnets$","GSE14764_eset",sep=""))
+
+@
+
+% ---------------------------------------------------------------------------
+
+
+The observed and resampled differential expression of the genes is calculated. 
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+
+# List of observed (vector) and resampled (resampling by gene matrix) t statistics
+
+intersectGeneNames = intersect(rownames(CurOvGradeKEGGnets[[2]]$expr),
+							   V(largestCompKEGGigraph)$name)
+
+expr = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr
+classLabels = CurOvGradeKEGGnets[["GSE14764_eset"]]$grade
+#I can reduce the number of t tests by reducing the expr matrix to 
+#only genes that are on the network.
+reducedExpr = expr[intersectGeneNames,]
+
+geneTStats = calcGeneTStats(reducedExpr,
+							classLabels,
+							numResamples = 1000)
+
+@
+
+% ---------------------------------------------------------------------------
+
+The distances on the global network are calculated.
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+
+CompKEGG_ShortestDistMatrix <- 
+calcAllPairsDistances(network = largestCompKEGGigraph,
+					     directionPaths="all",
+					     weightVector = NULL,
+					     networkName = "largestCompKEGGigraph")
+
+@
+
+
+
+In this example, MCM2 (KEGG ID: hsa:4171) is the candidate disease gene. 
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+
+genes.assayedETnetwork <- intersect(
+	rownames(CurOv_RankCorMatrix_GSE14764_eset),
+	rownames(CompKEGG_ShortestDistMatrix))
+
+gene.id <- "hsa:4171"
+
+@
+
+
+% ---------------------------------------------------------------------------
+
+
+
+The Sphere of Influence and Decay of Differential Procedures are run.
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+geneNIDG.hsa4171 <-  geneNIDG(
+	gene.id = gene.id,
+	distance.matrix = CompKEGG_ShortestDistMatrix,
+	cor.matrix = CurOv_RankCorMatrix_GSE14764_eset,
+	geneStats.observed = geneTStats$observed,
+	perm.geneStats.matrix = geneTStats$resampled,
+	num.Sphere.resamples = 1000,
+	diameter = 34,
+	genes.assayedETnetwork = genes.assayedETnetwork)
+
+
+@
+
+% ---------------------------------------------------------------------------
+
+
+The evidence from both procedures is combined. 
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+
+
+
+p.Fisher <- vapply( 1:34, function(index){
+
+	x <- sumlog( c(geneNIDG.hsa4171$p.Decay[index],
+			geneNIDG.hsa4171$p.Sphere[index]) )
+
+	return(x$p)
+
+
+},
+numeric(1) )
+
+geneNIDG.hsa4171 <- cbind(geneNIDG.hsa4171,p.Fisher)
+
+@
+% ---------------------------------------------------------------------------
+
+

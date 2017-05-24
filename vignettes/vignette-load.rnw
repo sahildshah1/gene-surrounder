@@ -1,0 +1,28 @@
+
+
+Our algorithm uses the correlation between the expression of the genes, their
+differential expression, and their distances on the global network. 
+
+
+<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+load("../../data/CurOvGradeKEGGnets.RData")
+
+load("../../data/largestCompKEGGigraph.RData")
+
+@
+
+
+%figures-illustration.rnw but compute p-values instead of load 2016-04-06/geneNIDG.GSE14764.RData
+%follow back geneNIDG.GSE14764 in 2016-04-06 in study.R etc to compute p-values
+
+%<<fig=FALSE,echo=TRUE,width=11.43,height=6.71>>=
+
+% # # GSE14764 -------------------------------------------------------------------
+% # load("../../data/CurOv_RankCorMatrix_GSE14764_eset.RData")
+% # load('../../data/CurOv_tStatistics.RData')
+
+% # # LCC KEGGG -----------------------------------------------------------------
+% # load("../../data/LCCKEGG_ShortestDistMatrix.RData")
+
+% @

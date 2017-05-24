@@ -1,0 +1,24 @@
+\begin{thebibliography}{1}
+
+\bibitem{SHAH2017}
+Sahil Shah and Rosemary Braun.
+\newblock Network-based identification of candidate disease genes in expression
+  data.
+\newblock {\em Forthcoming}, 2017.
+
+\bibitem{Ganzfried2013}
+Benjamin~Frederick Ganzfried, Markus Riester, Benjamin Haibe-Kains, Thomas
+  Risch, Svitlana Tyekucheva, Ina Jazic, Xin~Victoria Wang, Mahnaz Ahmadifar,
+  Michael~J. Birrer, Giovanni Parmigiani, Curtis Huttenhower, and Levi Waldron.
+\newblock {curatedOvarianData: Clinically annotated data for the ovarian cancer
+  transcriptome}.
+\newblock {\em Database}, 2013:1--10, 2013.
+
+\bibitem{Kanehisa2008}
+Minoru Kanehisa, Michihiro Araki, Susumu Goto, Masahiro Hattori, Mika Hirakawa,
+  Masumi Itoh, Toshiaki Katayama, Shuichi Kawashima, Shujiro Okuda, Toshiaki
+  Tokimatsu, and Yoshihiro Yamanishi.
+\newblock {KEGG for linking genomes to life and the environment}.
+\newblock {\em Nucleic Acids Research}, 36(SUPPL. 1):480--484, 2008.
+
+\end{thebibliography}
