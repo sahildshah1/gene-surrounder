@@ -11,12 +11,11 @@
 #' differential expression of other genes j in the neighborhood is inversely 
 #' related to the distance d(i,j) of gene j from gene i
 #'
-#' @param distance.matrix This is a description. 
-#' @param gene.id This is a description. 
-#' @param genes.assayedETnetwork This is a description. 
-#' @param diameter This is a description. 
-#' @param geneStats This is a description. 
-#'
+#' @param distance.matrix A matrix of the distances on the global network
+#' @param gene.id The name of the gene to which GeneSurrounder is applied 
+#' @param genes.assayedETnetwork The names of the genes that are assayed and on the network
+#' @param diameter The diameter of the global network 
+#' @param geneStats.observed A vector of the observed differential expression
 #'
 
 Observed.DecayDE <- function(distance.matrix,

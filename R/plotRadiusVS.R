@@ -1,4 +1,10 @@
 
+#' Plot results of GeneSurrounder 
+#'
+#' \code{plotRadiusVS} plots the results of GeneSurrounder using the output of the geneNIDG function
+#
+#' @param geneNIDG.gene A dataframe that is the output of the geneNIDG function
+#' 
 
 
 plotRadiusVS <- function(geneNIDG.gene){

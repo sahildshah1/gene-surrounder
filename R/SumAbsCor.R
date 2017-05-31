@@ -1,12 +1,12 @@
 
 
-#' Sum of vector elements.
+#' Helper function for Sphere of Influence procedure 
 #'
 #' \code{SumAbsCor} returns the total observed correlation between gene i and its neighbors
 #'
-#' @param cor.vector This is a description. 
-#' @param diameter This is a description.
-#' @param distances.to.j This is a description.
+#' @param cor.vector A vector of correlations
+#' @param diameter The diameter of the global network
+#' @param distances.to.j A vector of distances to the gene to which GeneSurrounder is applied
 #'
 #' 
 

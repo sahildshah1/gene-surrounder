@@ -13,14 +13,14 @@
 #' the putative disease gene is a “disruptive” candidate disease gene 
 #' meeting both criteria.
 #'
-#' @param distance.matrix This is a description.
-#' @param cor.matrix This is a description. 
-#' @param geneStats This is a description. 
-#' @param genes.assayedETnetwork This is a description. 
-#' @param diameter This is a description. 
-#' @param num.resamples This is a description. 
-#' @param gene.id This is a description. 
-#'
+#' @param distance.matrix A matrix of the distances on the global network
+#' @param cor.matrix A matrix of correlations between the expression of the genes
+#' @param geneStats.observed A vector of the observed differential expression
+#' @param perm.geneStats.matrix A matrix of the resampled differential expression
+#' @param genes.assayedETnetwork The names of the genes that are assayed and on the network
+#' @param diameter The diameter of the global network 
+#' @param num.Sphere.resamples The number of resamples when running the Sphere of Influence Procedure
+#' @param gene.id The name of the gene to which GeneSurrounder is applied 
 
 
 geneNIDG <- function(distance.matrix,

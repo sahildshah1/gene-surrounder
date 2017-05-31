@@ -7,14 +7,14 @@
 #' is more strongly correlated with its network neighbors than with a 
 #' random set of genes
 #'
-#' @param gene.id This is a description. 
-#' @param distance.matrix This is a description. 
-#' @param cor.matrix This is a description. 
-#' @param diameter This is a description. 
-#' @param num.resamples default 1000. 
-#' @param genes.assayedETnetwork This is a description. 
+#' @param gene.id The name of the gene to which GeneSurrounder is applied 
+#' @param distance.matrix A matrix of the distances on the global network
+#' @param cor.matrix A matrix of correlations between the expression of the genes
+#' @param diameter The diameter of the global network 
+#' @param num.Sphere.resamples defaults to 1000. The number of resamples when running the Sphere of Influence Procedure
+#' @param genes.assayedETnetwork The names of the genes that are assayed and on the network
 #'
-#'
+
 
  Resample.SI <- function(gene.id,
 						distance.matrix,
