@@ -19,9 +19,11 @@ disease gene.
 
 --- 
 
-In order to illustrate our method, we apply our algorithm to one study of high-vs-low grade ovar- ian cancer from the publicly available and curated collection curatedOvarianData (GEO accession GSE14764). We have constructed the global network model from KEGG pathways.
+In order to illustrate our method, we apply our algorithm to one study of high-
+vs-low grade ovarian cancer from the publicly available and curated collection
+curatedOvarianData (GEO accession GSE14764). We have constructed the global
+network model from KEGG pathways. To follow the example:
 
---- 
 
 1. Clone this repo and change directories to gene-surrounder/vignettes/figs. 
 2. Open vignette-main.pdf and an R interpretor
