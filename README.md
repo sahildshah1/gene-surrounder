@@ -1,13 +1,11 @@
 
 **Network-based identification of disease genes in expression data: the GeneSurrounder method**
+<!-- 
+Sahil Shah sahil.shah AT u.northwestern DOT edu
 
-Sahil Shah
+--- -->
 
-sahil.shah AT u.northwestern DOT edu
-
----
-
-The GeneSurrounder package implements the method we previously developed [1] to
+The GeneSurrounder package implements the method we previously developed to
 identify disease- associated genes from expression data and an independent
 network model of cellular interactions. We developed GeneSurrounder to find the
 genes with neighbors on the network that are differentially expressed (with the
