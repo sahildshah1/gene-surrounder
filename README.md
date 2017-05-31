@@ -26,7 +26,7 @@ network model from KEGG pathways. To follow the example:
 
 
 1. Clone this repo and change directories to gene-surrounder/vignettes/figs. 
-2. Open vignette-main.pdf and an R interpreter
+2. Open vignette-main.pdf and a R interpreter
 3. In the R interpreter, change directories to gene-surrounder/vignettes/figs
 and follow the example in vignette-main.pdf
 
