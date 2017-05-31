@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  3 APR 2017 15:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  30 MAY 2017 23:06
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -517,13 +517,6 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 42.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/ae/t1aett.fd
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Overfull \hbox (10.38486pt too wide) in paragraph at lines 47--49
-\T1/aer/m/n/10.95 The \T1/aett/m/n/10.95 NIDG \T1/aer/m/n/10.95 pack-age and it
-s doc-u-men-ta-tion are avail-able on GitHub at []$\T1/aett/m/n/10.95 https : /
- / github . com / sahildshah1$[]\T1/aer/m/n/10.95 . 
- []
-
-
 Overfull \hbox (24.54369pt too wide) in paragraph at lines 108--113
 \T1/aer/m/n/10.95 The func-tions that im-ple-ment our method have to be sourced
 . The \T1/aett/m/n/10.95 Ob-served.SI, Re-sam-ple.SI,SumAbsCor
@@ -609,10 +602,10 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/201
 5/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2015
 /texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on vignette-main.pdf (7 pages, 209154 bytes).
+Output written on vignette-main.pdf (7 pages, 209307 bytes).
 PDF statistics:
- 155 PDF objects out of 1000 (max. 8388607)
- 125 compressed objects within 2 object streams
+ 156 PDF objects out of 1000 (max. 8388607)
+ 126 compressed objects within 2 object streams
  33 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -31,7 +31,7 @@
 
 % =============================================================================
 
-\title{\vspace{-1cm}The NIDG package Vignette}
+\title{\vspace{-1cm}The GeneSurrounder package Vignette}
 
 \author{Sahil Shah and Rosemary Braun 
 	   \href{mailto:rbraun@northwestern.edu}{<\texttt{rbraun@northwestern.edu}>}}
@@ -44,15 +44,15 @@
 
 \section*{Availability}  %------------------------------------------------
 
-The \texttt{NIDG} package and its documentation are available on GitHub at 
+The \texttt{GeneSurrounder} package and its documentation are available on GitHub at 
 \url{https://github.com/sahildshah1}. 
 
 
 \section*{Introduction}  %------------------------------------------------
 
-The \texttt{NIDG} package implements the method we previously developed~\cite{SHAH2017}
+The \texttt{GeneSurrounder} package implements the method we previously developed~\cite{SHAH2017}
 to identify disease-associated genes from expression data and an independent
-network model of cellular interactions. We developed NIDG to find the genes
+network model of cellular interactions. We developed GeneSurrounder to find the genes
 with neighbors on the network that are differentially expressed (with the
 magnitude of the differential expression decreasing with distance from the
 putative disease gene) and have correlated expression with the putative disease
@@ -272,10 +272,10 @@ Our method outputs a data frame.
  $ radius        : int  1 2 3 4 5 6 7 8 9 10 ...
  $ size          : num  9 14 17 46 169 ...
  $ observed.tau_b: num  NaN -0.0156 -0.046 -0.4233 -0.0916 ...
- $ p.Decay       : num  1 0.509 0.426 0.003 0.106 0.019 0.667 0.219 0.145 0.131 ...
+ $ p.Decay       : num  1 0.511 0.439 0.003 0.105 0.018 0.699 0.226 0.169 0.153 ...
  $ observed.cor  : num  3.29 6.2 7.45 14.36 39.42 ...
- $ p.Sphere      : num  0.001 0.000999 0.000999 0.000999 0.000999 ...
- $ p.Fisher      : num  7.91e-03 4.36e-03 3.73e-03 4.11e-05 1.08e-03 ...
+ $ p.Sphere      : num  0.000999 0.000999 0.000999 0.000999 0.000999 ...
+ $ p.Fisher      : num  7.90e-03 4.38e-03 3.83e-03 4.11e-05 1.07e-03 ...
 \end{Soutput}
 \begin{Sinput}
 > 
