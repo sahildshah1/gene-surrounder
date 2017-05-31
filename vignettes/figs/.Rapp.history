@@ -1,29 +1,3 @@
-igenes.distances <- distances[distances <= 2#
-									  & distances > 0]#
-		igenes.names <- names(igenes.distances)
-str(igenes.names)
-X <- cbind(igenes.distances,#
-			  t( abs(geneStats$resampled[,igenes.names]) ) #
-			  )
-str(x)
-str(X)
-head(X)
-str(X)
-X[1:10,1:10]
-Y <- cor.fk(X)
-str(Y)
-Y <- cor.fk(X)
-Y[1,1:10]
-Y[1,2:10]
-null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
-#
-			return ( cor.fk( abs(geneStats$resampled[resample.index,igenes.names]) , #
-							igenes.distances) #
-#
-				   )#
-#
-		},#
-		numeric(1))
 str(null)
 null <- vapply(1:nrow(geneStats$resampled),function(resample.index){#
 #
@@ -1168,66 +1142,829 @@ rm(CurOv_RankCorMatrix_GSE9891_eset)
 install.package("RBGL")
 install.packages("RBGL")
 ?phyper
-load("../../data/CurOvGradeKEGGnets.RData")#
+?plotmath
+plot(1, main=expression(beta[1]))
+library(metap)#
 #
-load("../../data/largestCompKEGGigraph.RData")
-setwd("~/research/fishelMethod/nidg/vignettes/figs/")
-clc()
-clear()
-load("../../data/CurOvGradeKEGGnets.RData")#
+load('~/Documents/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
+#load('~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
 #
-load("../../data/largestCompKEGGigraph.RData")
-library(pcaPP)#
-library(igraph) # load largestCompKEGGigraph
-str(largestCompKEGGigraph)
-source("../../data/calcCorMatrix.R")#
-source("../../data/calcGeneTStats.R")#
-source("../../data/calcAllPairsDistances.R")
-source("../../R/calcCorMatrix.R")#
+p.Fisher <- vapply( 1:(34*2709), function(index){#
 #
-source("../../R/calcGeneTStats.R")#
+    x <- sumlog( c(geneNIDG.GSE14764$p.Decay[index],#
+                   geneNIDG.GSE14764$p.Sphere[index]) )#
 #
-source("../../R/calcAllPairsDistances.R")
-source("../../R/Observed.SI.R")#
-source("../../R/Resample.SI.R")#
+    return(x$p)#
+},#
+numeric(1) )#
 #
-source("../../R/SumAbsCor.R")#
+geneNIDG.GSE14764 <- cbind(geneNIDG.GSE14764,p.Fisher)#
+# http://research.stowers-institute.org/efg/R/Graphics/Basics/mar-oma/index.htm#
 #
-source("../../R/Resample.DecayDE.R")#
-source("../../R/Observed.DecayDE.R")#
-source("../../R/geneNIDG.R")
-CurOv_RankCorMatrix_GSE14764_eset <- #
-calcCorMatrix(exprMatrix = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr,#
-              corMethod = "spearman",#
-              exprName = paste("CurOvGradeKEGGnets$","GSE14764_eset",sep=""))
-# List of observed (vector) and resampled (resampling by gene matrix) t statistics#
+par(mfcol=c(4,1),mar=c(1,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
 #
-intersectGeneNames = intersect(rownames(CurOvGradeKEGGnets[[2]]$expr),#
-                               V(largestCompKEGGigraph)$name)#
+gene.id <- "hsa:4171"#
 #
-expr = CurOvGradeKEGGnets[["GSE14764_eset"]]$expr#
-classLabels = CurOvGradeKEGGnets[["GSE14764_eset"]]$grade#
-#I can reduce the number of t tests by reducing the expr matrix to #
-#only genes that are on the network.#
-reducedExpr = expr[intersectGeneNames,]#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'lightblue',#
+xlab = '',#
+ylab = expression(-log_{10}(p^{Sphere})),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')
+?plotmath
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'lightblue',#
+xlab = '',#
+ylab = expression(-log[10](p^(Sphere)),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')
+)
+par(mfcol=c(4,1),mar=c(1,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
 #
-geneTStats = calcGeneTStats(reducedExpr,#
-                            classLabels,#
-                            numResamples = 1000)
-str(geneTStats)
-CompKEGG_ShortestDistMatrix #
-<- calcAllPairsDistances(network = largestCompKEGGigraph,#
-                         directionPaths="all",#
-                         weightVector = NULL,#
-                         networkName = "largestCompKEGGigraph")
-CompKEGG_ShortestDistMatrix <- calcAllPairsDistances(network = largestCompKEGGigraph,#
-                         directionPaths="all",#
-                         weightVector = NULL,#
-                         networkName = "largestCompKEGGigraph")
-str(CompKEGG_ShortestDistMatrix)
-str(CompKEGG_ShortestDistMatrix)
-str(geneStats)
-strgeneTStats
-str(geneTStats)
-nrows(geneTStats$resampled)
-nrow(geneTStats$resampled)
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere]),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay]),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined]),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+par(mfcol=c(4,1),mar=c(1,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere]),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere]),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as ``disruptive`` gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere]),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as disruptive gene',#
+xaxt='n')
+)
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)
+par(mfcol=c(4,1),mar=c(1,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay])),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined])),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+par(mfcol=c(4,1),mar=c(2,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay])),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined])),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+par(mfcol=c(4,1),mar=c(4,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay])),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined])),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+library(metap)#
+#
+load('~/Documents/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
+#load('~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
+#
+p.Fisher <- vapply( 1:(34*2709), function(index){#
+#
+	x <- sumlog( c(geneNIDG.GSE14764$p.Decay[index],#
+				   geneNIDG.GSE14764$p.Sphere[index]) )#
+#
+	return(x$p)#
+},#
+numeric(1) )#
+#
+geneNIDG.GSE14764 <- cbind(geneNIDG.GSE14764,p.Fisher)#
+# http://research.stowers-institute.org/efg/R/Graphics/Basics/mar-oma/index.htm#
+#
+par(mfcol=c(4,1),mar=c(4,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay])),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined])),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius (r)',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+library(metap)#
+#
+load('~/Documents/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
+#load('~/research/fishelMethod/sweave/2016-04-06/geneNIDG.GSE14764.RData')#
+#
+p.Fisher <- vapply( 1:(34*2709), function(index){#
+#
+	x <- sumlog( c(geneNIDG.GSE14764$p.Decay[index],#
+				   geneNIDG.GSE14764$p.Sphere[index]) )#
+#
+	return(x$p)#
+},#
+numeric(1) )#
+#
+geneNIDG.GSE14764 <- cbind(geneNIDG.GSE14764,p.Fisher)#
+# http://research.stowers-institute.org/efg/R/Graphics/Basics/mar-oma/index.htm#
+#
+par(mfcol=c(4,1),mar=c(4,4,2,1), oma=c(2,2,2,2),cex.axis = 1.5)#
+#
+gene.id <- "hsa:4171"#
+#
+GSE14764 <-  geneNIDG.GSE14764[geneNIDG.GSE14764$gene.id == gene.id,]#
+# radius vs p.Sphere -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Sphere),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Sphere])),#
+ylim = c(0,5),#
+main = 'MCM2 (DNA replication factor) identified as "disruptive" gene',#
+xaxt='n')#
+#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(a)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+#
+# axis(4)#
+# mtext("(A)", side=4, line=3)#
+# radius vs p.Decay -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Decay),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Decay])),#
+ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(b)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs p.Fisher -------------------------------------------------------#
+#
+plot(GSE14764$radius,#
+-log10(GSE14764$p.Fisher),#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+lwd = 2,#
+bg = 'orangered',#
+xlab = '',#
+ylab = expression(-log[10](p[Combined])),#
+# ylim = c(0,5),#
+xaxt='n')#
+abline(h = -log10(0.01),lty=3,lwd=2)#
+abline(h = -log10(0.05),lty=4,lwd=2)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+#
+mtext("(c)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)#
+# radius vs size      -------------------------------------------------------#
+plot(GSE14764$radius,#
+ GSE14764$size,#
+type = 'b',#
+cex = 2,#
+pch = 21,#
+bg = 'orangered',#
+xlab = 'Neighborhood Radius',#
+ylab = 'Number of Assayed Genes',#
+lwd = 2)#
+abline(h=2708)#
+#
+# http://seananderson.ca/2013/10/21/panel-letters.html#
+mtext("(d)", #
+	  side = 3, #
+	  adj = 0.05, #
+	  line = -2.25,#
+      cex = 1)
+rm(ls())
+rm(list=ls())
+ls()
+# Assign genesOvLCC.NAMES and source to load 'pNIDG' ----> cf. Notebook 6 p67#
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+GSE14764.geneStats <- geneTStatsList[[2]]$observed#
+genesOvLCC.NAMES <- names(GSE14764.geneStats)#
+#
+source("../../../shiny/load-geneNIDG.R") # path relative dir wher rnw built#
+#
+pNIDG.GSE14764 <- minpF.GSE14764#
+pNIDG.GSE17260 <- minpF.GSE17260#
+pNIDG.GSE9891 <- minpF.GSE9891
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+GSE14764.geneStats <- geneTStatsList[[2]]$observed#
+genesOvLCC.NAMES <- names(GSE14764.geneStats)
+source("../../../shiny/load-geneNIDG.R") # path relative dir wher rnw built
+source("~\resarch/fishelMethod/shiny/load-geneNIDG.R")
+source("~/research//fishelMethod/shiny/load-geneNIDG.R")
+load('~/Documents/fishelMethod/data/omics/CurOv_tStatistics.RData')#
+GSE14764.geneStats <- geneTStatsList[[2]]$observed#
+genesOvLCC.NAMES <- names(GSE14764.geneStats)
+source("~/research/fishelMethod//shiny/load-geneNIDG.R") # path relative dir wher rnw built
+pNIDG.GSE14764 <- minpF.GSE14764#
+pNIDG.GSE17260 <- minpF.GSE17260#
+pNIDG.GSE9891 <- minpF.GSE9891
+load("~/research/fishelMethod//data/RAW/omics/CurOvGradeKEGGnets.RData")
+pDE.GSE14764 <- CurOvGradeKEGGnets[["GSE14764_eset"]]$DE$p.value#
+names(pDE.GSE14764) <- rownames(CurOvGradeKEGGnets[["GSE14764_eset"]]$DE)#
+pDE.GSE14764 <- pDE.GSE14764[genesOvLCC.NAMES]#
+#
+pDE.GSE17260 <- CurOvGradeKEGGnets[["GSE17260_eset"]]$DE$p.value#
+names(pDE.GSE17260) <- rownames(CurOvGradeKEGGnets[["GSE17260_eset"]]$DE)#
+pDE.GSE17260 <- pDE.GSE17260[genesOvLCC.NAMES]#
+#
+pDE.GSE9891 <- CurOvGradeKEGGnets[["GSE9891_eset"]]$DE$p.value#
+names(pDE.GSE9891) <- rownames(CurOvGradeKEGGnets[["GSE9891_eset"]]$DE)#
+pDE.GSE9891 <- pDE.GSE9891[genesOvLCC.NAMES]
+par(mfrow=c(1,3))#
+#
+# pNIDG-pDE -----------------------------------------------#
+#
+plot(-log10(pDE.GSE14764),#
+	-log10(pNIDG.GSE14764),#
+	col = adjustcolor('orangered', alpha.f = 0.6),#
+	xlab = expression(-log[10](p[DE])),#
+	ylab = expression(-log[10](p[GS])),#
+	main = "Ovarian Cancer Study: GSE14764",#
+	pch = 16#
+	)#
+#
+abline(v= -log10(0.01),h= -log10(0.01),lty=1, lwd = 2)#
+abline(v= -log10(0.05),h= -log10(0.05),lty=2, lwd = 2)#
+plot(-log10(pDE.GSE17260),#
+	-log10(pNIDG.GSE17260),#
+	col = adjustcolor('orangered', alpha.f = 0.6),#
+	xlab = expression(-log[10](p[DE])),#
+	ylab = expression(-log[10](p[GS])),#
+	main = "Ovarian Cancer Study: GSE17260",#
+	pch = 16#
+	)#
+#
+abline(v= -log10(0.01),h= -log10(0.01),lty=1, lwd = 2)#
+abline(v= -log10(0.05),h= -log10(0.05),lty=2, lwd = 2)#
+plot(-log10(pDE.GSE9891),#
+	-log10(pNIDG.GSE9891),#
+	col = adjustcolor('orangered', alpha.f = 0.6),#
+	xlab = expression(-log[10](p[DE])),#
+	ylab = expression(-log[10](p[GS])),#
+	main = "Ovarian Cancer Study: GSE9891",#
+	pch = 16#
+	)#
+#
+abline(v= -log10(0.01),h= -log10(0.01),lty=1, lwd = 2)#
+abline(v= -log10(0.05),h= -log10(0.05),lty=2, lwd = 2)
+setwd("~/research/gene-surrounder/vignettes/figs/")
+load("../../data/CurOvGradeKEGGnets.RData")
+CurOvGradeKEGGnets[["GSE14764_eset"]]$grade
+str(CurOvGradeKEGGnets[["GSE14764_eset"]]$grade)
