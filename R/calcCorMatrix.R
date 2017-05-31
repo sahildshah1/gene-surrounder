@@ -1,5 +1,17 @@
 
 
+
+#' Pre-processing Step 
+#'
+#' Before applying GeneSurrounder, the correlation
+#' between the expression of the genes should be calculated
+#'
+#' @param exprMatrix A matrix (genes by samples) of expression values.
+#' @param corMethod A string contating the correlation method to use.
+#' @param exprName A string containg the name of the expression matrix.
+#'
+
+
 calcCorMatrix <- function(exprMatrix,corMethod,exprName){
 	#
 	# Args:

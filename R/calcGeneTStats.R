@@ -1,6 +1,19 @@
 #===========================================#
 #===========================================#
 
+
+#' Pre-processing Step 
+#'
+#' Before applying GeneSurrounder, the observed and resampled 
+#' differential expression of the genes should be calculated 
+#'
+#' @param expr A matrix (genes by samples) of expression values.
+#' @param classLabels A factor with levels corresponding to class labels.
+#' @param numResamples defaults to 1000. The number of resamples when calculating resampled differential expression. 
+#' 
+
+
+
 # Calc gene level statistics & a null set of gene level stats (shuffle phenotype labels)
 calcGeneTStats <- function(expr,classLabels,numResamples=1000){
 	# Calc gene level statistics
