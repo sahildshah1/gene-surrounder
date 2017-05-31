@@ -25,9 +25,8 @@ curatedOvarianData (GEO accession GSE14764). We have constructed the global
 network model from KEGG pathways. To follow the example:
 
 
-1. Clone this repo and change directories to gene-surrounder/vignettes/figs. 
-2. Open vignette-main.pdf and a R interpreter
-3. In the R interpreter, change directories to gene-surrounder/vignettes/figs
+1. Clone this repo, change directories to gene-surrounder/vignettes/figs, and open vignette-main.pdf
+2. Open a R interpreter, change directories to gene-surrounder/vignettes/figs,
 and follow the example in vignette-main.pdf
 
 
