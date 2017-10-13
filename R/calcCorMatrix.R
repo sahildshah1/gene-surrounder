@@ -12,7 +12,7 @@
 #'
 
 
-calcCorMatrix <- function(exprMatrix,corMethod,exprName){
+calcCorMatrix <- function(exprMatrix,corMethod,exprName,useMethod){
 	#
 	# Args:
 	#
@@ -23,7 +23,7 @@ calcCorMatrix <- function(exprMatrix,corMethod,exprName){
 	#=======================================
 	
 	# cor calculates correlations between *columns* => take transpose of exprMatrix
-	corMatrix <- cor(t(exprMatrix),method=corMethod)
+	corMatrix <- cor(t(exprMatrix),method=corMethod,use=useMethod)
 	
 	# Meta data for the for the corMatrix
 	attr(corMatrix,"expr") <- exprName

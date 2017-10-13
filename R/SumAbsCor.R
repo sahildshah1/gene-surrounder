@@ -17,7 +17,7 @@ SumAbsCor <- function(cor.vector,diameter,distances.to.j){
 	sum.abs.cor <- vapply(1:diameter, function(distance){
 
 		#
-		sum( abs( cor.vector[distances.to.j <= distance] ) )
+		sum( abs( cor.vector[distances.to.j <= distance] ), na.rm= TRUE)
 
 
 	},
