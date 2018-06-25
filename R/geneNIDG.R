@@ -20,6 +20,7 @@
 #' @param diameter The diameter of the global network 
 #' @param num_Sphere_resamples The number of resamples when running the Sphere of Influence Procedure
 #' @param gene_id The name of the gene to which GeneSurrounder is applied 
+#' @export
 geneNIDG <- function(distance_matrix, cor_matrix, geneStats_observed,
                      perm_geneStats_matrix, genes_assayedETnetwork,
                      diameter, num_Sphere_resamples, gene_id) {

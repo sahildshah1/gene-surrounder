@@ -4,12 +4,12 @@
 #' between the expression of the genes should be calculated
 #'
 #' @param exprMatrix A matrix (genes by samples) of expression values.
-#' @param corMethod A string with the correlation method to use.
 #' @param exprName A string with the name of the expression matrix.
+#' @param corMethod A string with the correlation method to use.
 #' @param useMethod A string to specify which values to use.
 #'   See "use" option under ?cor
-#'
-calcCorMatrix <- function(exprMatrix, corMethod, exprName, useMethod){
+#' @export
+calcCorMatrix <- function(exprMatrix, exprName, corMethod = "pearson", useMethod = "everything"){
   #
   # Args:
   #
