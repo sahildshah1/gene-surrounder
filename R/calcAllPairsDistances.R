@@ -8,23 +8,22 @@
 #'   distances should be calculated.
 #' @param weightVector defaults to NULL. A numeric vector giving edge weights.
 #' @param networkName A string containg the name of the network.
-#'
+#' @importFrom igraph shortest.paths V
 calcAllPairsDistances <- function(network, directionPaths = "all",
-                                  weightVector = NULL, networkName){
+                                  weightVector = NULL, networkName) {
   #
   # Args:
   #
   # Returns:
   #
-  require(igraph)
-
   # weightVector = null => use weight attribute if it exists otherwise don't
-  shortestPathsMatrix <- shortest.paths(network,
-    v = V(network),
-    to = V(network),
+  shortestPathsMatrix <- igraph::shortest.paths(network,
+    v = igraph::V(network),
+    to = igraph::V(network),
     mode = directionPaths,
-    weights = weightVector)
-	
-  attr(shortestPathsMatrix,"networkName") <- networkName
+    weights = weightVector
+  )
+
+  attr(shortestPathsMatrix, "networkName") <- networkName
   return(shortestPathsMatrix)
 }

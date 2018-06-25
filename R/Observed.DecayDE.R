@@ -16,6 +16,7 @@
 #' @param genes_assayedETnetwork The names of the genes that are assayed and on the network
 #' @param diameter The diameter of the global network 
 #' @param geneStats_observed A vector of the observed differential expression
+#' @importFrom pcaPP cor.fk
 #'
 Observed.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
                              diameter, geneStats_observed) {
@@ -26,6 +27,7 @@ Observed.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
     # Excludes gene j with distances > 0 
     igenes_distances <- distances[distances <= RADIUS & distances > 0]
     igenes_names <- names(igenes_distances)
-    return(cor.fk(abs(geneStats_observed[igenes_names]), igenes_distances))
+    tau_b <- abs(geneStats_observed[igenes_names])
+    pcaPP::cor.fk(tau_b, igenes_distances)
   }, numeric(1))
 }

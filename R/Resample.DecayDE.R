@@ -17,10 +17,12 @@
 #' @param diameter The diameter of the global network 
 #' @param perm_geneStats_matrix A matrix of the resampled differential expression
 #' @param sizes The number of genes assayed and on the network in each neighborhood
+#' @importFrom pcaPP cor.fk
 #'
 Resample.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
                              diameter, perm_geneStats_matrix, sizes) {
 
+  numResamples <- nrow(perm_geneStats_matrix)
   distances <- distance_matrix[gene_id, genes_assayedETnetwork]
 
   num_genes <- length(genes_assayedETnetwork) - 1
@@ -33,11 +35,9 @@ Resample.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
     igenes_distances <- distances[distances <= RADIUS & distances > 0]
     igenes_names <- names(igenes_distances)
 
-    null <- vapply(1:nrow(perm_geneStats_matrix), function(resample_index) {
-      return(cor.fk(abs(perm_geneStats_matrix[resample_index, igenes_names]), 
-                    igenes_distances
-             ) 
-      )
+    null <- vapply(1:numResamples, function(resample_index) {
+      tau_b <- abs(perm_geneStats_matrix[resample_index, igenes_names])
+      pcaPP::cor.fk(tau_b, igenes_distances)
     }, numeric(1))
 
     # X <- cbind(igenes_distances,
@@ -45,12 +45,12 @@ Resample.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
     # )
 
     # Y <- cor.fk(X)
-  }, numeric(1000)) # numeric is length of one of the columns vapply stacks
+  }, numeric(numResamples)) # numeric is length of one of the columns vapply stacks
 
   # 2:genid_d means number of rows in null_tau_b is not geneid_d
   null_tau_b <- cbind(null_tau_b, matrix(
     rep(null_tau_b[, geneid_d], diameter - geneid_d),
-    nrow = 1000)
+    nrow = numResamples)
   )
 
   # cf. ?vapply  
