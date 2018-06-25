@@ -4,19 +4,19 @@
 \alias{Resample.DecayDE}
 \title{Decay of Differential Expression step}
 \usage{
-Resample.DecayDE(distance.matrix, gene.id, genes.assayedETnetwork, diameter,
-  perm.geneStats.matrix, sizes)
+Resample.DecayDE(distance_matrix, gene_id, genes_assayedETnetwork, diameter,
+  perm_geneStats_matrix, sizes)
 }
 \arguments{
-\item{distance.matrix}{A matrix of the distances on the global network}
+\item{distance_matrix}{A matrix of the distances on the global network}
 
-\item{gene.id}{The name of the gene to which GeneSurrounder is applied}
+\item{gene_id}{The name of the gene to which GeneSurrounder is applied}
 
-\item{genes.assayedETnetwork}{The names of the genes that are assayed and on the network}
+\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network}
 
 \item{diameter}{The diameter of the global network}
 
-\item{perm.geneStats.matrix}{A matrix of the resampled differential expression}
+\item{perm_geneStats_matrix}{A matrix of the resampled differential expression}
 
 \item{sizes}{The number of genes assayed and on the network in each neighborhood}
 }
@@ -25,4 +25,3 @@ Decay of Differential Expression tests whether the magnitude of
 differential expression of other genes j in the neighborhood is inversely 
 related to the distance d(i,j) of gene j from gene i
 }
-

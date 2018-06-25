@@ -4,25 +4,25 @@
 \alias{geneNIDG}
 \title{GeneSurrounder wrapper}
 \usage{
-geneNIDG(distance.matrix, cor.matrix, geneStats.observed, perm.geneStats.matrix,
-  genes.assayedETnetwork, diameter, num.Sphere.resamples, gene.id)
+geneNIDG(distance_matrix, cor_matrix, geneStats_observed, perm_geneStats_matrix,
+  genes_assayedETnetwork, diameter, num_Sphere_resamples, gene_id)
 }
 \arguments{
-\item{distance.matrix}{A matrix of the distances on the global network}
+\item{distance_matrix}{A matrix of the distances on the global network}
 
-\item{cor.matrix}{A matrix of correlations between the expression of the genes}
+\item{cor_matrix}{A matrix of correlations between the expression of the genes}
 
-\item{geneStats.observed}{A vector of the observed differential expression}
+\item{geneStats_observed}{A vector of the observed differential expression}
 
-\item{perm.geneStats.matrix}{A matrix of the resampled differential expression}
+\item{perm_geneStats_matrix}{A matrix of the resampled differential expression}
 
-\item{genes.assayedETnetwork}{The names of the genes that are assayed and on the network}
+\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network}
 
 \item{diameter}{The diameter of the global network}
 
-\item{num.Sphere.resamples}{The number of resamples when running the Sphere of Influence Procedure}
+\item{num_Sphere_resamples}{The number of resamples when running the Sphere of Influence Procedure}
 
-\item{gene.id}{The name of the gene to which GeneSurrounder is applied}
+\item{gene_id}{The name of the gene to which GeneSurrounder is applied}
 }
 \description{
 The GeneSurrounder method consists of two tests that are run 
@@ -30,4 +30,3 @@ independently of each other and then combined to determine if
 the putative disease gene is a “disruptive” candidate disease gene 
 meeting both criteria.
 }
-

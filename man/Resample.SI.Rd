@@ -4,21 +4,21 @@
 \alias{Resample.SI}
 \title{Sphere of Influence Step}
 \usage{
-Resample.SI(gene.id, distance.matrix, cor.matrix, diameter,
-  num.Sphere.resamples = 1000, genes.assayedETnetwork)
+Resample.SI(gene_id, distance_matrix, cor_matrix, diameter,
+  num_Sphere_resamples = 1000, genes_assayedETnetwork)
 }
 \arguments{
-\item{gene.id}{The name of the gene to which GeneSurrounder is applied}
+\item{gene_id}{The name of the gene to which GeneSurrounder is applied}
 
-\item{distance.matrix}{A matrix of the distances on the global network}
+\item{distance_matrix}{A matrix of the distances on the global network}
 
-\item{cor.matrix}{A matrix of correlations between the expression of the genes}
+\item{cor_matrix}{A matrix of correlations between the expression of the genes}
 
 \item{diameter}{The diameter of the global network}
 
-\item{num.Sphere.resamples}{defaults to 1000. The number of resamples when running the Sphere of Influence Procedure}
+\item{num_Sphere_resamples}{defaults to 1000. The number of resamples when running the Sphere of Influence Procedure}
 
-\item{genes.assayedETnetwork}{The names of the genes that are assayed and on the network}
+\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network}
 }
 \description{
 Sphere of Influence assesses if a 
@@ -26,4 +26,3 @@ candidate gene i meets the first criterion by testing if gene i
 is more strongly correlated with its network neighbors than with a 
 random set of genes
 }
-

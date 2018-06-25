@@ -17,4 +17,3 @@ calcGeneTStats(expr, classLabels, numResamples = 1000)
 Before applying GeneSurrounder, the observed and resampled 
 differential expression of the genes should be calculated
 }
-

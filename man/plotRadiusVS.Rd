@@ -12,4 +12,3 @@ plotRadiusVS(geneNIDG.gene)
 \description{
 \code{plotRadiusVS} plots the results of GeneSurrounder using the output of the geneNIDG function
 }
-
