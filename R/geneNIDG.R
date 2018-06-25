@@ -96,6 +96,9 @@ geneNIDG <- function(distance_matrix, cor_matrix, geneStats_observed,
   # ?adply
   # The most unambiguous behaviour is achieved when .fun returns a data frame
 
+  fisher_stat <- -2*(log(p_Decay) + log(p_Sphere))
+  p_Fisher <- pchisq(fisher_stat, 2, lower.tail = FALSE)
+
   res <- data.frame(
     gene_id = rep(gene_id, diameter),
     radius = 1:diameter,
@@ -103,7 +106,8 @@ geneNIDG <- function(distance_matrix, cor_matrix, geneStats_observed,
     observed_tau_b = observed_tau_b,
     p_Decay = p_Decay,
     observed_cor = observed_cor,
-    p_Sphere = p_Sphere
+    p_Sphere = p_Sphere,
+    p_Fisher = p_Fisher
   )
   res
 }
