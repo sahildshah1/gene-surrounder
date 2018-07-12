@@ -20,6 +20,25 @@
 #'
 Observed.DecayDE <- function(distance_matrix, gene_id, genes_assayedETnetwork,
                              diameter, geneStats_observed) {
+  if (class(genes_assayedETnetwork) %in% c("character", "factor")) {
+    if (!all(genes_assayedETnetwork %in% colnames(distance_matrix))) {
+      bad_genes <- genes_assayedETnetwork[!(genes_assayedETnetwork %in% colnames(distance_matrix))]
+      bad_genes_msg <- paste(bad_genes, collapse = ", ")
+      bad_genes_num <- length(bad_genes)
+      stop(paste("There are ", bad_genes_num, " genes that are not in 'distance_matrix'.",
+                  "Here is a list of those genes not included:", bad_genes_msg, sep = "\n"))
+    }
+  } else if (class(genes_assayedETnetwork) %in% c("numeric", "integer")) {
+    genes_assayedETnetwork <- as.integer(genes_assayedETnetwork)
+    if (any(genes_assayedETnetwork <= 0 | genes_assayedETnwork > ncol(distance_matrix))) {
+      stop("At least one of the supplied column numbers was less than zero or greater than ",
+           "the total number of columns in 'distance_matrix'.")
+    }
+  }
+
+  if (gene_id %in% rownames(distance_matrix)) {
+    stop("The supplied 'gene_id', '", gene_id, "', is not found in 'distance_matrix'.")
+  }
 
   distances <- distance_matrix[gene_id, genes_assayedETnetwork]
 

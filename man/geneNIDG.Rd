@@ -16,7 +16,8 @@ geneNIDG(distance_matrix, cor_matrix, geneStats_observed, perm_geneStats_matrix,
 
 \item{perm_geneStats_matrix}{A matrix of the resampled differential expression}
 
-\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network}
+\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network.
+if 'all' is used, then all genes in the network are tested.}
 
 \item{diameter}{The diameter of the global network}
 
