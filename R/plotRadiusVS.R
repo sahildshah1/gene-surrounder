@@ -1,13 +1,36 @@
 #' Plot results of GeneSurrounder 
 #'
-#' \code{plotRadiusVS} plots the results of GeneSurrounder using the output of the geneNIDG function
+#' \code{plotRadiusVS} plots the results of GeneSurrounder using the output of
+#' the geneNIDG function.
 #'
-#' @param geneNIDG.gene A dataframe that is the output of the geneNIDG function
-#' 
-plotRadiusVS <- function(geneNIDG.gene) {
-  geneNIDG.hsa4171 <- geneNIDG.gene
-  par(mfcol=c(4,1), mar=c(1,4,2,1), oma=c(2,2,2,2), cex.axis = 1.5)
-  plot(geneNIDG.hsa4171$radius, -log10(geneNIDG.hsa4171$p.Sphere),
+#' @param geneNIDG_gene A dataframe that is the output of the geneNIDG function
+#' @param plotTitle the title at the top of the plot
+#'
+#' @details All of the panels of this plot have as the x-axis the
+#' 'radius', defined as the distance away from the gene along the network graph.
+#' This plot has four panels:
+#'   \itemize{
+#'     \item{(1)}{the correlation sphere p-value versus the radius}
+#'     \item{(2)}{the differential expression decay p-value versus the radius}
+#'     \item{(3)}{the Fisher's combined p-value versus the radius}
+#'     \item{(4)}{the number of genes tested versus the radius}
+#'   }
+#'
+#' The first three panels have a line to indicate where the p-values of
+#' 0.01 and 0.05 are located, which are the typical thresholds to use with
+#' this method. Note that the reported p-values are not corrected for multiple
+#' hypotheses because the p-values are not independent.
+#'
+#' The last panel has a line to indicate the maximum number of genes tested
+#' on the network.
+#'
+#' @return no return value; this function is used for its side effect
+#' @importFrom graphics par plot abline mtext 
+#' @export
+plotRadiusVS <- function(geneNIDG_gene, plotTitle = "GeneSurrounder Results") {
+  par(mfcol = c(4, 1), mar = c(1, 4, 2, 1),
+      oma = c(2, 2, 2, 2), cex.axis = 1.5)
+  plot(geneNIDG_gene$radius, -log10(geneNIDG_gene$p.Sphere),
     type = 'b',
     cex = 2,
     pch = 21,
@@ -16,7 +39,7 @@ plotRadiusVS <- function(geneNIDG.gene) {
     xlab = '',
     ylab = '-log10(p.Sphere)',
     ylim = c(0,5),
-    main = 'MCM2 (DNA replication factor) identified as "mechanistic driver" ',
+    main = plotTitle,
     xaxt = 'n'
   )
 
@@ -37,7 +60,7 @@ plotRadiusVS <- function(geneNIDG.gene) {
 
   # radius vs p.Decay -------------------------------------------------------
 
-  plot(geneNIDG.hsa4171$radius, -log10(geneNIDG.hsa4171$p.Decay),
+  plot(geneNIDG_gene$radius, -log10(geneNIDG_gene$p.Decay),
     type = 'b',
     cex = 2,
     pch = 21,
@@ -60,7 +83,7 @@ plotRadiusVS <- function(geneNIDG.gene) {
     cex = 1)
 
   # radius vs p.Fisher -------------------------------------------------------
-  plot(geneNIDG.hsa4171$radius, -log10(geneNIDG.hsa4171$p.Fisher),
+  plot(geneNIDG_gene$radius, -log10(geneNIDG_gene$p.Fisher),
     type = 'b',
     cex = 2,
     pch = 21,
@@ -83,7 +106,7 @@ plotRadiusVS <- function(geneNIDG.gene) {
     cex = 1)
 
   # radius vs size      -------------------------------------------------------
-  plot(geneNIDG.hsa4171$radius, geneNIDG.hsa4171$size,
+  plot(geneNIDG_gene$radius, geneNIDG_gene$size,
     type = 'b',
     cex = 2,
     pch = 21,
@@ -92,7 +115,7 @@ plotRadiusVS <- function(geneNIDG.gene) {
     ylab = 'Number of Assayed Genes',
     lwd = 2)
 
-  abline(h=2708)
+  abline(h = max(geneNIDG_gene$size))
 
   # http://seananderson.ca/2013/10/21/panel-letters.html
 
@@ -102,6 +125,3 @@ plotRadiusVS <- function(geneNIDG.gene) {
     line = -2.25,
     cex = 1)
 }
-
-
-
