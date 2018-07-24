@@ -4,20 +4,20 @@
 \alias{calcAllPairsDistances}
 \title{Pre-processing Step}
 \usage{
-calcAllPairsDistances(network, directionPaths = "all", weightVector = NULL,
-  networkName)
+calcAllPairsDistances(network, networkName, directionPaths = "all",
+  weightVector = NULL)
 }
 \arguments{
 \item{network}{An igraph network on which to calculate the distances.}
 
-\item{directionPaths}{defaults to "all". A string indicating how the distances should be calculated.}
+\item{networkName}{A string containing the name of the network. Required.}
+
+\item{directionPaths}{defaults to "all". A string indicating how the
+distances should be calculated.}
 
 \item{weightVector}{defaults to NULL. A numeric vector giving edge weights.}
-
-\item{networkName}{A string containg the name of the network.}
 }
 \description{
 Before applying GeneSurrounder, the distances on the 
 global network should be calculated
 }
-

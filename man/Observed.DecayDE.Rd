@@ -4,23 +4,22 @@
 \alias{Observed.DecayDE}
 \title{Decay of Differential Expression step}
 \usage{
-Observed.DecayDE(distance.matrix, gene.id, genes.assayedETnetwork, diameter,
-  geneStats.observed)
+Observed.DecayDE(distance_matrix, gene_id, genes_assayedETnetwork, diameter,
+  geneStats_observed)
 }
 \arguments{
-\item{distance.matrix}{A matrix of the distances on the global network}
+\item{distance_matrix}{A matrix of the distances on the global network}
 
-\item{gene.id}{The name of the gene to which GeneSurrounder is applied}
+\item{gene_id}{The name of the gene to which GeneSurrounder is applied}
 
-\item{genes.assayedETnetwork}{The names of the genes that are assayed and on the network}
+\item{genes_assayedETnetwork}{The names of the genes that are assayed and on the network}
 
 \item{diameter}{The diameter of the global network}
 
-\item{geneStats.observed}{A vector of the observed differential expression}
+\item{geneStats_observed}{A vector of the observed differential expression}
 }
 \description{
 Decay of Differential Expression, tests whether the magnitude of 
 differential expression of other genes j in the neighborhood is inversely 
 related to the distance d(i,j) of gene j from gene i
 }
-

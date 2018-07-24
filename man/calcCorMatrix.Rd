@@ -4,17 +4,20 @@
 \alias{calcCorMatrix}
 \title{Pre-processing Step}
 \usage{
-calcCorMatrix(exprMatrix, corMethod, exprName)
+calcCorMatrix(exprMatrix, exprName, corMethod = "pearson",
+  useMethod = "everything")
 }
 \arguments{
 \item{exprMatrix}{A matrix (genes by samples) of expression values.}
 
-\item{corMethod}{A string contating the correlation method to use.}
+\item{exprName}{A string with the name of the expression matrix.}
 
-\item{exprName}{A string containg the name of the expression matrix.}
+\item{corMethod}{A string with the correlation method to use.}
+
+\item{useMethod}{A string to specify which values to use.
+See "use" option under ?cor}
 }
 \description{
 Before applying GeneSurrounder, the correlation
 between the expression of the genes should be calculated
 }
-

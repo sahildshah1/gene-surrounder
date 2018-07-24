@@ -4,12 +4,36 @@
 \alias{plotRadiusVS}
 \title{Plot results of GeneSurrounder}
 \usage{
-plotRadiusVS(geneNIDG.gene)
+plotRadiusVS(geneNIDG_gene, plotTitle = "GeneSurrounder Results")
 }
 \arguments{
-\item{geneNIDG.gene}{A dataframe that is the output of the geneNIDG function}
+\item{geneNIDG_gene}{A dataframe that is the output of the geneNIDG function}
+
+\item{plotTitle}{the title at the top of the plot}
+}
+\value{
+no return value; this function is used for its side effect
 }
 \description{
-\code{plotRadiusVS} plots the results of GeneSurrounder using the output of the geneNIDG function
+\code{plotRadiusVS} plots the results of GeneSurrounder using the output of
+the geneNIDG function.
 }
+\details{
+All of the panels of this plot have as the x-axis the
+'radius', defined as the distance away from the gene along the network graph.
+This plot has four panels:
+  \itemize{
+    \item{(1)}{the correlation sphere p-value versus the radius}
+    \item{(2)}{the differential expression decay p-value versus the radius}
+    \item{(3)}{the Fisher's combined p-value versus the radius}
+    \item{(4)}{the number of genes tested versus the radius}
+  }
 
+The first three panels have a line to indicate where the p-values of
+0.01 and 0.05 are located, which are the typical thresholds to use with
+this method. Note that the reported p-values are not corrected for multiple
+hypotheses because the p-values are not independent.
+
+The last panel has a line to indicate the maximum number of genes tested
+on the network.
+}

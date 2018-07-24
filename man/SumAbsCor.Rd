@@ -4,16 +4,15 @@
 \alias{SumAbsCor}
 \title{Helper function for Sphere of Influence procedure}
 \usage{
-SumAbsCor(cor.vector, diameter, distances.to.j)
+SumAbsCor(cor_vector, diameter, distances_to_j)
 }
 \arguments{
-\item{cor.vector}{A vector of correlations}
+\item{cor_vector}{A vector of correlations}
 
 \item{diameter}{The diameter of the global network}
 
-\item{distances.to.j}{A vector of distances to the gene to which GeneSurrounder is applied}
+\item{distances_to_j}{A vector of distances to the gene to which GeneSurrounder is applied}
 }
 \description{
 \code{SumAbsCor} returns the total observed correlation between gene i and its neighbors
 }
-
